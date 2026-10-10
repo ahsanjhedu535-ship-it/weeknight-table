@@ -1,10 +1,11 @@
-# Weeknight Table — Next.js Recipe & Meal Planner Website
+# Quick Dinners — Next.js Recipe & Meal Planner Website
 
 A premium-looking, responsive starter website for a US-focused everyday food and meal-planning brand. Built with Next.js App Router, React, and plain CSS.
 
 ## Included
 - Homepage with featured recipes and category browsing
-- Seven recipe pages with ingredients, cooking instructions, practical tips, serving-size control, and Recipe structured data
+- Thirty recipe pages with ingredients, cooking instructions, prep and cook times, substitutions, storage notes, serving-size control, and Recipe structured data
+- Ten practical cooking and meal-planning guides
 - Dinner, breakfast, soups, and vegetarian category pages
 - Interactive weekly meal planner and grocery-list helper
 - About, contact, privacy policy, and disclaimer pages
@@ -15,7 +16,7 @@ A premium-looking, responsive starter website for a US-focused everyday food and
 ## Run locally
 1. Install Node.js 18.17 or newer.
 2. Extract the ZIP.
-3. Open a terminal in the `WeeknightTable` folder.
+3. Open a terminal in the project folder.
 4. Run `npm install`.
 5. Run `npm run dev` and open the local address shown in the terminal.
 6. Before deploying, run `npm run build` to check the production build.
@@ -28,7 +29,7 @@ A premium-looking, responsive starter website for a US-focused everyday food and
 
 ## Important before launch
 - The image URLs are remote Unsplash image URLs; replace them with properly licensed, downloaded and optimized assets if preferred. Internet access is required for remote images and Google Fonts.
-- Change the `https://example.com` placeholder in `app/layout.js`, `app/sitemap.js`, and `app/robots.js` to your real production domain before launch.
+- The public site URL and contact email live in `lib/site.js`. Update that file if the production domain changes.
 - The contact form is intentionally a demo and does not send email. Connect a real form provider/backend before accepting submissions.
 - The privacy policy is a starter template, not legal advice. Update it for the analytics, ad networks, cookies, consent management, and affiliate programs actually used.
 - Review all recipe quantities and methods in your own kitchen before presenting them as tested. The included recipes are starter editorial content, not a claim of professional testing.

@@ -1,17 +1,148 @@
 "use client";
+
 import { useState } from "react";
 import Link from "next/link";
+
 export default function RecipeInteractive({ recipe }) {
   const [servings, setServings] = useState(recipe.servings);
   const [checked, setChecked] = useState({});
   const multiplier = servings / recipe.servings;
   const scaled = (line) => {
     if (multiplier === 1) return line;
-    return line.replace(/^(\d+(?:\.\d+)?)(?=\s)/, (m, n) =>
-      String(Math.round(Number(n) * multiplier * 100) / 100)
+    return line.replace(/^(\d+(?:\.\d+)?)(?=\s)(?!\s+\d+\/\d+)/, (match, amount) =>
+      String(Math.round(Number(amount) * multiplier * 100) / 100)
     );
   };
+
   return (
-    <section className="section"> <div className="container recipe-layout"> <article className="recipe-body"> <img className="recipe-main-image" src={recipe.image} alt={recipe.title} /> <p className="recipe-intro"> This is the kind of meal that earns a place in your regular rotation: satisfying, approachable, and built around familiar ingredients. Follow the steps below, then use the tips to make it work for your kitchen. </p> <div className="recipe-stats"> <div className="recipe-stat"> <span>Total time</span> <strong>{recipe.time} min</strong> </div> <div className="recipe-stat"> <span>Servings</span> <strong>{servings}</strong> </div> <div className="recipe-stat"> <span>Difficulty</span> <strong>{recipe.difficulty}</strong> </div> <div className="recipe-stat"> <span>Style</span> <strong>{recipe.category}</strong> </div> </div> <h2>Ingredients</h2> <p> Check off ingredients as you get them ready. Adjust servings using the control beside the recipe. </p> <ul className="ingredient-list"> {recipe.ingredients.map((item, i) => ( <li key={i}> <input type="checkbox" checked={!!checked[i]} onChange={(e) => setChecked((p) => ({ ...p, [i]: e.target.checked })) } aria-label={`Mark ${item} complete`} /> <span>{scaled(item)}</span> </li> ))} </ul> <h2>How to make it</h2> <ol className="steps-list"> {recipe.steps.map((step, i) => ( <li key={i}>{step}</li> ))} </ol> <div className="tip-box"> <strong>Kitchen note</strong> <p>{recipe.tips}</p> </div> <h2>Make it part of your week</h2> <p> Pair this recipe with a simple green salad, seasonal vegetables, or whatever fresh sides you already have. Save it to your weekly plan so your shopping list is ready before you head to the store. </p> <Link href="/meal-planner" className="button-primary"> Open meal planner ↗ </Link> <div className="notice" style={{ marginTop: 28 }}> Food safety note: cooking times vary by appliance and ingredient size. Use a food thermometer where appropriate and follow safe food-handling practices. </div> </article> <aside className="recipe-sidebar"> <div className="sidebar-box"> <div className="eyebrow">Quick recipe guide</div> <h3>{recipe.title}</h3> <p>{recipe.description}</p> <div className="serving-control"> <span>Servings</span> <button onClick={() => setServings((s) => Math.max(1, s - 1))} aria-label="Decrease servings" > − </button> <strong>{servings}</strong> <button onClick={() => setServings((s) => Math.min(16, s + 1))} aria-label="Increase servings" > + </button> </div> <p> Ingredient quantities may need a little judgment when scaled. Use your best kitchen sense for seasoning and liquid. </p> </div> <div className="sidebar-box"> <h3>Recipe details</h3> <ul> <li>Prep-friendly ingredients</li> <li>Clear step-by-step method</li> <li>Practical cooking tips</li> <li>Everyday home-kitchen style</li> </ul> </div> <div className="sidebar-box"> <h3>Plan more meals</h3> <p>Choose several recipes and make a grocery list for your week.</p> <Link className="text-link" href="/meal-planner"> Open meal planner ↗ </Link> </div> </aside> </div> </section>
+    <section className="section">
+      <div className="container recipe-layout">
+        <article className="recipe-body">
+          <img
+            className="recipe-main-image"
+            src={recipe.image}
+            alt={recipe.imageAlt || recipe.title}
+          />
+          <p className="recipe-intro">{recipe.intro}</p>
+          <div className="recipe-stats">
+            <div className="recipe-stat">
+              <span>Prep</span>
+              <strong>{recipe.prepMinutes} min</strong>
+            </div>
+            <div className="recipe-stat">
+              <span>Cook</span>
+              <strong>{recipe.cookMinutes} min</strong>
+            </div>
+            <div className="recipe-stat">
+              <span>Servings</span>
+              <strong>{servings}</strong>
+            </div>
+            <div className="recipe-stat">
+              <span>Difficulty</span>
+              <strong>{recipe.difficulty}</strong>
+            </div>
+          </div>
+          <h2>Ingredients</h2>
+          <p>
+            Check off ingredients as you get them ready. Adjust servings using
+            the control beside the recipe. Amounts that start with a whole
+            number scale with the serving size. Fractions such as 1/2 cup stay
+            as written, so adjust those by eye.
+          </p>
+          <ul className="ingredient-list">
+            {recipe.ingredients.map((item, index) => (
+              <li key={item}>
+                <input
+                  type="checkbox"
+                  checked={!!checked[index]}
+                  onChange={(event) =>
+                    setChecked((current) => ({
+                      ...current,
+                      [index]: event.target.checked,
+                    }))
+                  }
+                  aria-label={`Mark ${item} complete`}
+                />
+                <span>{scaled(item)}</span>
+              </li>
+            ))}
+          </ul>
+          <h2>How to make it</h2>
+          <ol className="steps-list">
+            {recipe.steps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+          <div className="tip-box">
+            <strong>Kitchen note</strong>
+            <p>{recipe.tips}</p>
+          </div>
+          <h2>Substitutions</h2>
+          <ul>
+            {recipe.substitutions.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <h2>Storage</h2>
+          <p>{recipe.storage}</p>
+          <h2>Make it part of your week</h2>
+          <p>
+            Save this recipe in the weekly planner so the grocery list is ready
+            before you shop.
+          </p>
+          <Link href="/meal-planner" className="button-primary">
+            Open meal planner →
+          </Link>
+          <div className="notice" style={{ marginTop: 28 }}>
+            Food safety note: cooking times vary by appliance and ingredient
+            size. Use a food thermometer where the method gives a temperature,
+            and refrigerate leftovers within two hours.
+          </div>
+        </article>
+        <aside className="recipe-sidebar">
+          <div className="sidebar-box">
+            <div className="eyebrow">Quick recipe guide</div>
+            <h3>{recipe.title}</h3>
+            <p>{recipe.description}</p>
+            <div className="serving-control">
+              <span>Servings</span>
+              <button
+                onClick={() => setServings((current) => Math.max(1, current - 1))}
+                aria-label="Decrease servings"
+              >
+                −
+              </button>
+              <strong>{servings}</strong>
+              <button
+                onClick={() => setServings((current) => Math.min(16, current + 1))}
+                aria-label="Increase servings"
+              >
+                +
+              </button>
+            </div>
+            <p>
+              Ingredient quantities may need a little judgment when scaled. Use
+              your best kitchen sense for seasoning and liquid.
+            </p>
+          </div>
+          <div className="sidebar-box">
+            <h3>Recipe details</h3>
+            <ul>
+              <li>{recipe.prepMinutes} minutes of prep</li>
+              <li>{recipe.cookMinutes} minutes of cooking</li>
+              <li>{recipe.category}</li>
+              <li>{recipe.season}</li>
+            </ul>
+          </div>
+          <div className="sidebar-box">
+            <h3>Plan more meals</h3>
+            <p>Choose several recipes and make a grocery list for your week.</p>
+            <Link className="text-link" href="/meal-planner">
+              Open meal planner →
+            </Link>
+          </div>
+        </aside>
+      </div>
+    </section>
   );
 }

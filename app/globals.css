@@ -264,6 +264,26 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 26px;
 }
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.guide-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 20px 22px 22px;
+}
+.guide-card h2,
+.guide-card h3 {
+  font-size: 26px;
+  margin: 8px 0 10px;
+}
+.guide-card p {
+  color: var(--muted);
+  margin: 0 0 12px;
+}
 .recipe-card {
   background: white;
   border: 1px solid var(--line);
@@ -822,7 +842,8 @@ h3 {
     flex-direction: column;
     gap: 10px;
   }
-  .recipe-grid {
+  .recipe-grid,
+  .guide-grid {
     grid-template-columns: 1fr;
     gap: 18px;
   }

@@ -1,6 +1,53 @@
-export const metadata = { title: "Recipe Disclaimer" };
+import Link from "next/link";
+import { site } from "@/lib/site";
+
+export const metadata = {
+  title: "Recipe Disclaimer",
+  description:
+    "Food-safety, nutrition, and advertising notes for recipes published by Quick Dinners.",
+};
+
 export default function Disclaimer() {
   return (
-    <section className="section"> <div className="container prose"> <div className="eyebrow">Please read</div> <h1>Recipe & Website Disclaimer</h1> <p> Weeknight Table provides general food, recipe, and meal-planning information for educational and informational purposes. Results can vary based on ingredients, equipment, substitutions, altitude, and individual cooking conditions. </p> <h2>Food safety</h2> <p> Use safe food-handling practices, avoid cross-contamination, store foods at appropriate temperatures, and follow reliable food-safety guidance. Use a food thermometer where appropriate. Never rely on appearance alone to determine whether meat or other foods are safely cooked. </p> <h2>Nutrition information</h2> <p> Any nutrition estimates, if added, should be treated as approximate because brands and portions vary. This website does not provide medical or individualized nutrition advice. Consult a qualified professional for dietary needs or health concerns. </p> <h2>Advertising and affiliate relationships</h2> <p> If display ads, sponsored content, or affiliate links are added, they should be clearly disclosed in accordance with applicable laws and platform policies. No paid partnerships are represented in this starter version. </p> <h2>Editorial accuracy</h2> <p> We work to make information clear and useful, but cannot guarantee every recipe will work identically in every kitchen. Use your judgment and adjust recipes to your needs. </p> </div> </section>
+    <section className="section">
+      <div className="container prose">
+        <div className="eyebrow">Please read</div>
+        <h1>Recipe and website disclaimer</h1>
+        <p>
+          Quick Dinners publishes general cooking and meal-planning
+          information for home cooks. Results change with ingredients,
+          equipment, altitude, and how your oven runs. Read each method all the
+          way through before you start.
+        </p>
+        <h2>Food safety</h2>
+        <p>
+          Keep raw meat, poultry, and seafood separate from food you will eat
+          raw. Refrigerate leftovers within two hours. Poultry should reach
+          165°F (74°C) in the thickest part. Reheat leftovers until they are
+          steaming hot, about 165°F (74°C). Use a food thermometer. Color and
+          juices are not a reliable doneness test.
+        </p>
+        <h2>Nutrition</h2>
+        <p>
+          These pages do not provide medical or personalized nutrition advice.
+          If a nutrition estimate is added later, treat it as approximate,
+          because brands and portions differ. Talk with a qualified
+          professional about allergies, medical diets, or other health needs.
+        </p>
+        <h2>Advertising</h2>
+        <p>
+          This site does not currently run display ads, sponsored posts, or
+          affiliate links. If advertising is added, it will be identified, and
+          the <Link href="/privacy-policy">privacy policy</Link> will name the
+          provider.
+        </p>
+        <h2>Corrections</h2>
+        <p>
+          If a quantity, temperature, or step looks wrong, email{" "}
+          <a href={`mailto:${site.email}`}>{site.email}</a> and we will review
+          it.
+        </p>
+      </div>
+    </section>
   );
 }
