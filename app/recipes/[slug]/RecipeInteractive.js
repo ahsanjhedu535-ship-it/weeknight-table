@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { findRecipeNotes } from "@/lib/recipeNotes";
 
 export default function RecipeInteractive({ recipe }) {
   const [servings, setServings] = useState(recipe.servings);
   const [checked, setChecked] = useState({});
   const multiplier = servings / recipe.servings;
+  const notes = findRecipeNotes(recipe.slug);
   const scaled = (line) => {
     if (multiplier === 1) return line;
     return line.replace(/^(\d+(?:\.\d+)?)(?=\s)(?!\s+\d+\/\d+)/, (match, amount) =>
@@ -22,6 +24,8 @@ export default function RecipeInteractive({ recipe }) {
             className="recipe-main-image"
             src={recipe.image}
             alt={recipe.imageAlt || recipe.title}
+            width="1200"
+            height="800"
           />
           <p className="recipe-intro">{recipe.intro}</p>
           <div className="recipe-stats">
@@ -85,6 +89,24 @@ export default function RecipeInteractive({ recipe }) {
           </ul>
           <h2>Storage</h2>
           <p>{recipe.storage}</p>
+          {notes && (
+            <>
+              <h2>Pan and tools</h2>
+              <ul>
+                {notes.equipment.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <h2>What to prep first</h2>
+              <p>{notes.prepFirst}</p>
+              <h2>What to serve with it</h2>
+              <p>{notes.serveWith}</p>
+              <h2>Leftovers for lunch</h2>
+              <p>{notes.leftovers}</p>
+              <h2>If it goes wrong</h2>
+              <p>{notes.fix}</p>
+            </>
+          )}
           <h2>Make it part of your week</h2>
           <p>
             Save this recipe in the weekly planner so the grocery list is ready

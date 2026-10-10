@@ -19,16 +19,18 @@ export default function Header() {
           className="menu-toggle"
           onClick={() => setOpen(!open)}
           aria-label="Toggle navigation"
+          aria-expanded={open}
+          aria-controls="site-nav"
         >
-          ☰
+          {open ? "✕" : "☰"}
         </button>
-        <nav className={open ? "nav open" : "nav"}>
-          <Link href="/category/dinner">Dinner</Link>
-          <Link href="/category/breakfast">Breakfast</Link>
-          <Link href="/category/soups">Soups</Link>
-          <Link href="/category/vegetarian">Vegetarian</Link>
-          <Link href="/guides">Guides</Link>
-          <Link href="/meal-planner" className="nav-cta">
+        <nav id="site-nav" className={open ? "nav open" : "nav"}>
+          <Link href="/category/dinner" onClick={() => setOpen(false)}>Dinner</Link>
+          <Link href="/category/breakfast" onClick={() => setOpen(false)}>Breakfast</Link>
+          <Link href="/category/soups" onClick={() => setOpen(false)}>Soups</Link>
+          <Link href="/category/vegetarian" onClick={() => setOpen(false)}>Vegetarian</Link>
+          <Link href="/guides" onClick={() => setOpen(false)}>Guides</Link>
+          <Link href="/meal-planner" className="nav-cta" onClick={() => setOpen(false)}>
             Meal planner ↗
           </Link>
         </nav>

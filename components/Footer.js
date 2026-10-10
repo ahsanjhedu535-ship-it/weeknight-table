@@ -30,8 +30,10 @@ export default function Footer() {
         <div>
           <strong>About</strong>
           <Link href="/about">Our story</Link>
+          <Link href="/editorial-standards">Editorial standards</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/privacy-policy">Privacy policy</Link>
+          <Link href="/terms">Terms of use</Link>
           <Link href="/disclaimer">Disclaimer</Link>
         </div>
       </div>
@@ -40,7 +42,9 @@ export default function Footer() {
           © {new Date().getFullYear()} {site.name}. All rights reserved.
         </span>
         <span>
-          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+          {" · "}
+          <a href={`mailto:${site.privacyEmail}`}>{site.privacyEmail}</a>
         </span>
       </div>
     </footer>

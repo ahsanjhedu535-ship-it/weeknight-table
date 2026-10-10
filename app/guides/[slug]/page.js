@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { guides, findGuide } from "@/lib/guides";
+import { site, publishedLabel } from "@/lib/site";
+import { breadcrumbList, pageUrl, publisher } from "@/lib/schema";
 
 export function generateStaticParams() {
   return guides.map((guide) => ({ slug: guide.slug }));
@@ -13,6 +15,13 @@ export async function generateMetadata({ params }) {
         title: guide.title,
         description: guide.description,
         keywords: guide.keywords,
+        alternates: { canonical: `/guides/${params.slug}` },
+        openGraph: {
+          title: guide.title,
+          description: guide.description,
+          type: "article",
+          url: pageUrl(`/guides/${params.slug}`),
+        },
       }
     : { title: "Guide not found" };
 }
@@ -20,9 +29,35 @@ export async function generateMetadata({ params }) {
 export default function GuidePage({ params }) {
   const guide = findGuide(params.slug);
   if (!guide) notFound();
+  const url = pageUrl(`/guides/${guide.slug}`);
+  const article = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: guide.title,
+    description: guide.description,
+    datePublished: site.published,
+    dateModified: site.published,
+    inLanguage: "en-US",
+    mainEntityOfPage: url,
+    author: publisher,
+    publisher,
+  };
+  const crumbs = breadcrumbList([
+    { name: "Home", url: site.url },
+    { name: "Guides", url: pageUrl("/guides") },
+    { name: guide.title, url },
+  ]);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }}
+      />
       <section className="page-hero">
         <div className="container">
           <div className="breadcrumbs">
@@ -32,6 +67,10 @@ export default function GuidePage({ params }) {
           <div className="eyebrow">{guide.minutes} minute read</div>
           <h1>{guide.title}</h1>
           <p>{guide.description}</p>
+          <p className="byline">
+            Published {publishedLabel()} by{" "}
+            <Link href="/about">{site.name}</Link>.
+          </p>
         </div>
       </section>
       <section className="section">

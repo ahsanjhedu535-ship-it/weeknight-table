@@ -1,15 +1,26 @@
 import Link from "next/link";
 import { guides } from "@/lib/guides";
+import { site } from "@/lib/site";
+import { breadcrumbList, pageUrl } from "@/lib/schema";
 
 export const metadata = {
   title: "Cooking Guides",
   description:
     "Guides for planning easy weeknight dinners, building a grocery list, and storing leftovers safely.",
+  alternates: { canonical: "/guides" },
 };
 
 export default function GuidesPage() {
+  const crumbs = breadcrumbList([
+    { name: "Home", url: site.url },
+    { name: "Guides", url: pageUrl("/guides") },
+  ]);
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }}
+      />
       <section className="page-hero">
         <div className="container">
           <div className="breadcrumbs">

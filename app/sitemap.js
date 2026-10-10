@@ -9,7 +9,9 @@ export default function sitemap() {
     { url: `${base}/about`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.4 },
     { url: `${base}/contact`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.4 },
     { url: `${base}/privacy-policy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.2 },
+    { url: `${base}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.2 },
     { url: `${base}/disclaimer`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.2 },
+    { url: `${base}/editorial-standards`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.4 },
     { url: `${base}/meal-planner`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/guides`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     ...categories.map((category) => ({
