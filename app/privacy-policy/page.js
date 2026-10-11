@@ -16,7 +16,7 @@ export default function Privacy() {
         <div className="eyebrow">Site information</div>
         <h1>Privacy Policy</h1>
         <p>
-          <strong>Last updated: October 10, 2026</strong>
+          <strong>Last updated: October 11, 2026</strong>
         </p>
         <p>
           This policy explains how {site.name}, the publisher of {site.url},
@@ -63,8 +63,12 @@ export default function Privacy() {
           technical request data such as IP address, browser type, date and
           time, and the page requested so the site can be delivered and
           protected from abuse. That processing is described in Vercel&apos;s
-          own privacy terms. {site.name} does not run a separate analytics
-          product and does not build a visitor profile from those logs.
+          own privacy terms. Pages also load Google Analytics ({site.analyticsId}
+          ). Google receives technical visit data such as the page address,
+          browser type, and an approximate location derived from the IP
+          address, and it sets the analytics cookies described below. That
+          processing is described in{" "}
+          <a href="https://policies.google.com/privacy">Google&apos;s privacy policy</a>.
         </p>
 
         <h2>Google Fonts</h2>
@@ -86,8 +90,14 @@ export default function Privacy() {
             installed, so an ad network is not setting cookies on these pages.
           </li>
           <li>
-            <strong>No analytics cookies.</strong> There is no analytics tag
-            writing a visitor cookie.
+            <strong>Analytics cookies.</strong> Google Analytics sets cookies
+            such as <code>_ga</code> and <code>_ga_{site.analyticsId.slice(2)}</code>{" "}
+            to distinguish visits and measure which pages are read. You can
+            block or delete these in your browser, or use{" "}
+            <a href="https://tools.google.com/dlpage/gaoptout">
+              Google&apos;s Analytics opt-out add-on
+            </a>
+            .
           </li>
           <li>
             <strong>No account cookie.</strong> The site does not ask you to
@@ -123,6 +133,7 @@ export default function Privacy() {
           <li>To correct a recipe, guide, or page when you report an error.</li>
           <li>To respond to access, correction, and deletion requests.</li>
           <li>To protect the site from abuse and to keep host logs.</li>
+          <li>To measure which pages are visited, through Google Analytics.</li>
         </ul>
         <p>
           We do not sell personal information. We do not share personal
@@ -156,7 +167,8 @@ export default function Privacy() {
         <p>
           In the past 12 months, the personal information this site receives
           directly is the content of emails visitors choose to send, plus
-          technical hosting logs processed by the host. We do not collect
+          technical hosting logs processed by the host and visit measurements
+          processed by Google Analytics. We do not collect
           government ID numbers, precise geolocation, or financial account
           numbers through the website.
         </p>
@@ -172,14 +184,14 @@ export default function Privacy() {
         </p>
         <p>
           The legal bases we rely on are: your request, when you email us and
-          we reply; legitimate interests, when the host processes technical
-          logs to deliver and protect the site; and consent, if a non-essential
-          cookie is ever added. Consent would be asked before that cookie is
-          set, and you could withdraw it later by emailing{" "}
-          {site.privacyEmail}.
+          we reply; and legitimate interests, when the host processes technical
+          logs to deliver and protect the site and when Google Analytics
+          measures which pages are read. You can object to analytics by
+          blocking its cookies, using the opt-out add-on linked above, or
+          emailing {site.privacyEmail}.
         </p>
         <p>
-          Hosting and font delivery may process an IP address outside your
+          Hosting, font delivery, and Google Analytics may process an IP address outside your
           country, including in the United States, under the host&apos;s and
           Google&apos;s own transfer terms. Send GDPR requests to{" "}
           <a href={`mailto:${site.privacyEmail}?subject=GDPR%20privacy%20request`}>
