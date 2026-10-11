@@ -1,6 +1,6 @@
 # Quick Dinners
 
-Recipe site for https://quickdinners.online. Weeknight dinners, breakfasts, soups, vegetarian meals, kitchen guides, and a weekly meal planner. Built with Next.js App Router, React, and plain CSS.
+Recipe site for https://www.quickdinners.online. Weeknight dinners, breakfasts, soups, vegetarian meals, kitchen guides, and a weekly meal planner. Built with Next.js App Router, React, and plain CSS.
 
 Public contact: contact@quickdinners.online. Privacy requests: privacy@quickdinners.online.
 
