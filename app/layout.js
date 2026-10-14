@@ -61,6 +61,11 @@ export default function RootLayout({ children }) {
         />
         <script
           dangerouslySetInnerHTML={{
+            __html: `(function(s){s.dataset.zone='12029398',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
             __html: `self.options = {
   domain: "5gvci.com",
   zoneId: 12027331,
