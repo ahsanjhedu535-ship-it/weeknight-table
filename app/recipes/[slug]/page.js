@@ -4,6 +4,7 @@ import { recipes, findRecipe, categories } from "@/lib/recipes";
 import { site, publishedLabel } from "@/lib/site";
 import { breadcrumbList, pageUrl, publisher } from "@/lib/schema";
 import RecipeInteractive from "./RecipeInteractive";
+import EchoProductReviews from "./EchoProductReviews";
 
 const cuisineBySlug = {
   "creamy-tuscan-chicken-orzo": "Italian",
@@ -134,6 +135,19 @@ export default function RecipePage({ params }) {
         </div>
       </section>
       <RecipeInteractive recipe={recipe} />
+      <section className="section recipe-reviews">
+        <div className="container">
+          <h2>Reader reviews</h2>
+          <p className="recipe-intro">
+            Reviews here are for {recipe.title} only. Nothing appears until a
+            reader sends one.
+          </p>
+          <EchoProductReviews
+            productHandle={recipe.slug}
+            productTitle={recipe.title}
+          />
+        </div>
+      </section>
       <section className="section related-reading">
         <div className="container prose">
           <h2>Related reading</h2>

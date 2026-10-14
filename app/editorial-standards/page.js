@@ -63,9 +63,14 @@ export default function EditorialStandards() {
           exact plated recipe, the alt text says what is in the frame. The
           ingredient list and the steps are the recipe.
         </p>
+        <h2>Reader reviews</h2>
+        <p>
+          A review box sits under each recipe. A reader can post a review for
+          that recipe, and it is shown on that recipe only. {site.name} does
+          not write reviews.
+        </p>
         <h2>What these pages do not include</h2>
         <ul>
-          <li>Star ratings or reader reviews. None are collected on this site.</li>
           <li>
             Laboratory nutrition labels. Nutrition facts are approximate
             estimates. A number would change with the brand and the portion,
@@ -90,8 +95,7 @@ export default function EditorialStandards() {
           <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a> with the recipe
           name and the line you noticed. The{" "}
           <Link href="/contact">contact form</Link> checks the fields, then
-          opens your email app addressed to that inbox. It does not save the
-          message on this website.
+          saves the message so we can reply.
         </p>
       </div>
     </section>

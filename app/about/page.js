@@ -69,8 +69,7 @@ export default function About() {
           Privacy, cookie, CCPA, and GDPR requests go to{" "}
           <a href={`mailto:${site.privacyEmail}`}>{site.privacyEmail}</a>. The{" "}
           <Link href="/contact">contact form</Link> checks your name, email,
-          topic, and message, then opens your email app addressed to the
-          matching inbox. It does not store the message on this website.
+          topic, and message, then saves it so we can reply.
         </p>
         <p>
           Read the <Link href="/privacy-policy">privacy policy</Link>, the{" "}

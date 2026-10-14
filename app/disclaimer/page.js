@@ -81,7 +81,7 @@ export default function Disclaimer() {
 
         <h2>Advertising</h2>
         <p>
-          Monetag may show ads on these pages through the service worker. The{" "}
+          Monetag may show a display ad on these pages. The{" "}
           <Link href="/privacy-policy">privacy policy</Link> names that
           provider and the cookies that come with it. An ad is not an
           endorsement of the product by {site.name}. There are no sponsored

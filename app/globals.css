@@ -839,8 +839,12 @@ h3 {
 .faq-more {
   margin: 22px 0 28px;
 }
-.related-reading {
+.related-reading,
+.recipe-reviews {
   padding-top: 0;
+}
+.echo-reviews-widget {
+  margin-top: 8px;
 }
 .time-grid,
 .pantry-grid {

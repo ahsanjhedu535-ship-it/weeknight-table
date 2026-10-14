@@ -16,7 +16,7 @@ export default function Privacy() {
         <div className="eyebrow">Site information</div>
         <h1>Privacy Policy</h1>
         <p>
-          <strong>Last updated: October 13, 2026</strong>
+          <strong>Last updated: October 14, 2026</strong>
         </p>
         <p>
           This policy explains how {site.name}, the publisher of {site.url},
@@ -47,14 +47,22 @@ export default function Privacy() {
 
         <h2>Information you send by email</h2>
         <p>
-          The contact form does not store messages in a database on this
-          website. It checks that your name, email address, topic, and message
-          are usable, then opens your own email app. Recipe topics are
-          addressed to {site.contactEmail}. Privacy topics are addressed to{" "}
-          {site.privacyEmail}. If you send that email, we receive what you
-          chose to include, such as your name, your email address, and your
-          message. We use it to reply, to correct a recipe, or to handle a
-          privacy request. We do not sell that correspondence.
+          The contact form checks that your name, email address, topic, and
+          message are usable, then stores that message in our database so we
+          can reply. Recipe topics are handled at {site.contactEmail}. Privacy
+          topics are handled at {site.privacyEmail}. You can also email those
+          addresses directly. We use what you send to reply, to correct a
+          recipe, or to handle a privacy request. We do not sell that
+          correspondence.
+        </p>
+
+        <h2>Recipe reviews</h2>
+        <p>
+          Each recipe page loads a review box from EchoStream at
+          echo-stream-5nch.vercel.app. If you submit a review, that service
+          receives the recipe name and the review you enter. The review is
+          shown on that recipe only. {site.name} does not sell reviews and does
+          not add a rating that a reader did not submit.
         </p>
 
         <h2>Information collected automatically</h2>
@@ -87,8 +95,8 @@ export default function Privacy() {
         <ul>
           <li>
             <strong>Advertising cookies.</strong> Monetag may set or read
-            cookies through the service worker to show ads and measure whether
-            an ad was viewed. You can block third-party cookies in your browser.
+            cookies through its display ad to show an ad and measure whether
+            it was viewed. You can block third-party cookies in your browser.
           </li>
           <li>
             <strong>Analytics cookies.</strong> Google Analytics sets cookies
@@ -112,7 +120,7 @@ export default function Privacy() {
           </li>
         </ul>
         <p>
-          Monetag is the advertising provider loaded by the service worker.
+          Monetag is the advertising provider loaded by the display ad.
           Where the law allows, an ad network may also tailor ads. You
           can control personalized Google ads at{" "}
           <a href="https://adssettings.google.com/">Google&apos;s ad settings</a>{" "}

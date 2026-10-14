@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata = {
   title: "Contact Quick Dinners",
   description:
-    "Contact Quick Dinners at contact@quickdinners.online, or privacy@quickdinners.online for privacy requests. The form checks your message before it opens your email app.",
+    "Contact Quick Dinners at contact@quickdinners.online, or privacy@quickdinners.online for privacy requests. The form checks your message and saves it so we can reply.",
   alternates: { canonical: "/contact" },
 };
 
@@ -30,11 +30,10 @@ export default function Contact({ searchParams }) {
           </p>
           <p>
             Use the form below or write to either address directly. The form
-            checks that your name, email, topic, and message are filled in.
-            A recipe question is addressed to {site.contactEmail}. A privacy
-            request is addressed to {site.privacyEmail}. Your email app then
-            opens so you can send the message. This website does not keep a
-            copy of the form.
+            checks that your name, email, topic, and message are filled in,
+            then saves the message so we can reply. A recipe question is
+            handled at {site.contactEmail}. A privacy request is handled at{" "}
+            {site.privacyEmail}.
           </p>
           <h2>What to include</h2>
           <ul>
@@ -53,9 +52,9 @@ export default function Contact({ searchParams }) {
           <p>
             Required fields are marked by the checks that run when you submit.
             If a field needs a change, the form names that field and does not
-            open your email app. The{" "}
+            save the message. The{" "}
             <Link href="/privacy-policy">privacy policy</Link> explains what
-            happens to an email after you send it. The{" "}
+            happens to a message after you send it. The{" "}
             <Link href="/terms">terms of use</Link> cover messages you send
             about the site.
           </p>

@@ -16,7 +16,7 @@ export default function Terms() {
         <div className="eyebrow">Site information</div>
         <h1>Terms of use</h1>
         <p>
-          <strong>Last updated: October 10, 2026</strong>
+          <strong>Last updated: October 14, 2026</strong>
         </p>
         <p>
           These terms govern your use of {site.url}, published by {site.name}.
@@ -62,11 +62,11 @@ export default function Terms() {
         <h2>Messages you send</h2>
         <p>
           The <Link href="/contact">contact form</Link> checks your name,
-          email, topic, and message, then opens your email app addressed to{" "}
+          email, topic, and message, then saves it for a reply from{" "}
           {site.contactEmail} or {site.privacyEmail}. You are responsible for
           the information you choose to send. Do not include passwords,
           payment card numbers, or another person&apos;s private information.
-          We may keep the email long enough to reply and to document a
+          We keep the message long enough to reply and to document a
           correction or a privacy request, as described in the privacy policy.
         </p>
 
@@ -90,7 +90,7 @@ export default function Terms() {
 
         <h2>Advertising and other sites</h2>
         <p>
-          Monetag may show display ads through the service worker. There are
+          Monetag may show a display ad. There are
           no sponsored posts or affiliate links. The privacy policy names the
           advertising provider. Links to USDA pages, Unsplash,
           and other websites leave {site.url}. Those sites have their own

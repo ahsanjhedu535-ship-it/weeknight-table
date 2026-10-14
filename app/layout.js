@@ -1,5 +1,6 @@
 import Script from "next/script";
 import "./globals.css";
+import AdScripts from "@/components/AdScripts";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
@@ -43,43 +44,6 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en-US">
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(s){s.dataset.zone='12027334',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(s){s.dataset.zone='12027332',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(s){s.dataset.zone='12029332',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(s){s.dataset.zone='12029398',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `self.options = {
-  domain: "5gvci.com",
-  zoneId: 12027331,
-};
-self.lary = "";
-importScripts("https://5gvci.com/act/files/service-worker.min.js?r=sw");`,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `if ("serviceWorker" in navigator) { navigator.serviceWorker.register("/sw.js"); }`,
-          }}
-        />
-      </head>
       <body>
         <script
           type="application/ld+json"
@@ -88,6 +52,7 @@ importScripts("https://5gvci.com/act/files/service-worker.min.js?r=sw");`,
         <Header />
         <main>{children}</main>
         <Footer />
+        <AdScripts />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${site.analyticsId}`}
           strategy="afterInteractive"

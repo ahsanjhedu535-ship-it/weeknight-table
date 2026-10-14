@@ -33,7 +33,7 @@ const faqs = [
   },
   {
     question: "How do I report a wrong quantity or temperature?",
-    answer: `Email ${site.contactEmail} with the recipe name and the line you noticed, or use the contact form. Privacy requests go to ${site.privacyEmail}. The form checks the fields, then opens your email app. It does not store the message on this site.`,
+    answer: `Email ${site.contactEmail} with the recipe name and the line you noticed, or use the contact form. Privacy requests go to ${site.privacyEmail}. The form checks the fields and saves the message so we can reply.`,
   },
 ];
 
