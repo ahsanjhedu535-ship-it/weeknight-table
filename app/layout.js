@@ -46,12 +46,27 @@ export default function RootLayout({ children }) {
       <head>
         <script
           dangerouslySetInnerHTML={{
+            __html: `(function(s){s.dataset.zone='12027334',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(s){s.dataset.zone='12027332',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(s){s.dataset.zone='12029332',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
             __html: `self.options = {
-  domain: "3nbf4.com",
-  zoneId: 12027303,
+  domain: "5gvci.com",
+  zoneId: 12027331,
 };
 self.lary = "";
-importScripts("https://3nbf4.com/act/files/service-worker.min.js?r=sw");`,
+importScripts("https://5gvci.com/act/files/service-worker.min.js?r=sw");`,
           }}
         />
         <script
