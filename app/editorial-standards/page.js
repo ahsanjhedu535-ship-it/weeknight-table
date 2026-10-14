@@ -73,10 +73,9 @@ export default function EditorialStandards() {
             <Link href="/disclaimer">disclaimer</Link> states that limit.
           </li>
           <li>
-            Display ads, sponsored recipes, or affiliate links. If advertising
-            is added later, the{" "}
-            <Link href="/privacy-policy">privacy policy</Link> and the{" "}
-            <Link href="/disclaimer">disclaimer</Link> will name the provider.
+            Sponsored recipes or affiliate links. Monetag may show display ads.
+            The <Link href="/privacy-policy">privacy policy</Link> and the{" "}
+            <Link href="/disclaimer">disclaimer</Link> name that provider.
           </li>
         </ul>
         <h2>The meal planner</h2>

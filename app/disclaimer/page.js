@@ -81,11 +81,11 @@ export default function Disclaimer() {
 
         <h2>Advertising</h2>
         <p>
-          This site does not currently run display ads, sponsored posts, or
-          affiliate links. If advertising is added, it will be identified, and
-          the <Link href="/privacy-policy">privacy policy</Link> will name the
-          provider and the cookies that come with it. An ad, if one appears
-          later, is not an endorsement of the product by {site.name}.
+          Monetag may show ads on these pages through the service worker. The{" "}
+          <Link href="/privacy-policy">privacy policy</Link> names that
+          provider and the cookies that come with it. An ad is not an
+          endorsement of the product by {site.name}. There are no sponsored
+          posts or affiliate links.
         </p>
 
         <h2>Corrections</h2>

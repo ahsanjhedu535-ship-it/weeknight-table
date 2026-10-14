@@ -16,7 +16,7 @@ export default function Privacy() {
         <div className="eyebrow">Site information</div>
         <h1>Privacy Policy</h1>
         <p>
-          <strong>Last updated: October 11, 2026</strong>
+          <strong>Last updated: October 13, 2026</strong>
         </p>
         <p>
           This policy explains how {site.name}, the publisher of {site.url},
@@ -86,8 +86,9 @@ export default function Privacy() {
         </p>
         <ul>
           <li>
-            <strong>No advertising cookies.</strong> Display ads are not
-            installed, so an ad network is not setting cookies on these pages.
+            <strong>Advertising cookies.</strong> Monetag may set or read
+            cookies through the service worker to show ads and measure whether
+            an ad was viewed. You can block third-party cookies in your browser.
           </li>
           <li>
             <strong>Analytics cookies.</strong> Google Analytics sets cookies
@@ -111,10 +112,8 @@ export default function Privacy() {
           </li>
         </ul>
         <p>
-          If Google AdSense or another ad network is added later, that provider
-          may set or read cookies to show ads, limit how often you see an ad,
-          measure whether an ad was viewed, and, where the law allows, tailor
-          ads. Before that happens, this policy will name the provider. You
+          Monetag is the advertising provider loaded by the service worker.
+          Where the law allows, an ad network may also tailor ads. You
           can control personalized Google ads at{" "}
           <a href="https://adssettings.google.com/">Google&apos;s ad settings</a>{" "}
           and industry opt-out tools such as the{" "}

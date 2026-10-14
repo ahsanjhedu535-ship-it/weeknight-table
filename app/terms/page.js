@@ -90,9 +90,9 @@ export default function Terms() {
 
         <h2>Advertising and other sites</h2>
         <p>
-          Display ads, sponsored posts, and affiliate links are not currently
-          on this site. If advertising is added, it will be identified and the
-          privacy policy will name the provider. Links to USDA pages, Unsplash,
+          Monetag may show display ads through the service worker. There are
+          no sponsored posts or affiliate links. The privacy policy names the
+          advertising provider. Links to USDA pages, Unsplash,
           and other websites leave {site.url}. Those sites have their own
           terms.
         </p>
