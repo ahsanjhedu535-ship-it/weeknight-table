@@ -35,8 +35,15 @@ export async function POST(request) {
   } catch (error) {
     const detail = String(error?.message || error).replace(/mongodb(\+srv)?:\/\/\S+/gi, "mongodb://[redacted]");
     console.error("contact insert failed", detail);
+    const code = !process.env.MONGO_URI
+      ? "missing-env"
+      : /auth/i.test(detail)
+        ? "auth"
+        : /whitelist|ServerSelection|MongoNetwork|ECONNREFUSED|timed out/i.test(detail)
+          ? "unreachable"
+          : "save-failed";
     return NextResponse.json(
-      { error: "The message could not be saved. Try again in a moment." },
+      { error: "The message could not be saved. Try again in a moment.", code },
       { status: 503 }
     );
   }
