@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { findRecipeNotes } from "@/lib/recipeNotes";
+import CookingMode from "./CookingMode";
 
 export default function RecipeInteractive({ recipe }) {
   const [servings, setServings] = useState(recipe.servings);
@@ -46,6 +47,7 @@ export default function RecipeInteractive({ recipe }) {
               <strong>{recipe.difficulty}</strong>
             </div>
           </div>
+          <CookingMode recipe={recipe} notes={notes} />
           <h2>Ingredients</h2>
           <p>
             Check off ingredients as you get them ready. Adjust servings using
@@ -126,6 +128,17 @@ export default function RecipeInteractive({ recipe }) {
             <div className="eyebrow">Quick recipe guide</div>
             <h3>{recipe.title}</h3>
             <p>{recipe.description}</p>
+            <button
+              type="button"
+              className="button-primary cook-button"
+              onClick={() => {
+                const launch = document.getElementById("start-cooking");
+                if (launch) launch.click();
+                else document.getElementById("cooking-mode")?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+            >
+              Start cooking
+            </button>
             <div className="serving-control">
               <span>Servings</span>
               <button

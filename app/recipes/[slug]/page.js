@@ -135,7 +135,7 @@ export default function RecipePage({ params }) {
         </div>
       </section>
       <RecipeInteractive recipe={recipe} />
-      <section className="section recipe-reviews">
+      <section className="section recipe-reviews" id="reader-reviews">
         <div className="container">
           <h2>Reader reviews</h2>
           <p className="recipe-intro">
