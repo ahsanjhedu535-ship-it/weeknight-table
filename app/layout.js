@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `</script><script src="https://quge5.com/88/tag.min.js" data-zone="295470" async data-cfasync="false"></script><script>`,
+            __html: `(function(s){s.dataset.zone='12027332',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
           }}
         />
         <script
