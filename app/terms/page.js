@@ -90,7 +90,8 @@ export default function Terms() {
 
         <h2>Advertising and other sites</h2>
         <p>
-          Monetag may show a display ad. There are
+          Monetag may show a display ad and a vignette, may load a service
+          worker, and may open an ad after a click. There are
           no sponsored posts or affiliate links. The privacy policy names the
           advertising provider. Links to USDA pages, Unsplash,
           and other websites leave {site.url}. Those sites have their own

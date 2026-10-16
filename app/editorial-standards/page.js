@@ -78,7 +78,8 @@ export default function EditorialStandards() {
             <Link href="/disclaimer">disclaimer</Link> states that limit.
           </li>
           <li>
-            Sponsored recipes or affiliate links. Monetag may show display ads.
+            Sponsored recipes or affiliate links. Monetag may show a display ad
+            and a vignette, and may open an ad after a click.
             The <Link href="/privacy-policy">privacy policy</Link> and the{" "}
             <Link href="/disclaimer">disclaimer</Link> name that provider.
           </li>
