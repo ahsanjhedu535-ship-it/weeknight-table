@@ -1,6 +1,5 @@
 import Script from "next/script";
 import "./globals.css";
-import AdScripts from "@/components/AdScripts";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
@@ -44,6 +43,29 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en-US">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(s){s.dataset.zone='12029332',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(s){s.dataset.zone='12029398',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
+          }}
+        />
+        <script
+          src="https://quge5.com/88/tag.min.js"
+          data-zone="295470"
+          async
+          data-cfasync="false"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if("serviceWorker"in navigator)navigator.serviceWorker.register("/sw.js")`,
+          }}
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"
@@ -52,7 +74,6 @@ export default function RootLayout({ children }) {
         <Header />
         <main>{children}</main>
         <Footer />
-        <AdScripts />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${site.analyticsId}`}
           strategy="afterInteractive"
