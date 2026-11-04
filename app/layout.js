@@ -44,6 +44,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en-US">
       <head>
+      <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+      <script type="text/javascript">
+    aclib.runAutoTag({
+        zoneId: 'awzlhy4fnq',
+    });
+    </script>
        
       </head>
       <body>
