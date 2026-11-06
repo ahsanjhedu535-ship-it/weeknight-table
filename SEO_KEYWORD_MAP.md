@@ -8,25 +8,30 @@ Confirm volume in Google Search Console after each deploy. Not traffic guarantee
 ### Quick soup recipes
 - Head: quick soup recipes, easy soup recipes, weeknight soup
 - Hub: `/category/soups`, `/collections/quick-soup-recipes`
-- Supporting: chicken noodle, tomato soup, lentil soup, tortilla soup, chicken orzo soup, white chicken chili, broccoli cheddar, minestrone, creamy mushroom, greek lemon chicken soup, 20-minute tomato soup, creamy potato soup, freezer chicken tortilla soup
+- Supporting: chicken noodle, tomato soup, lentil soup, tortilla soup, chicken orzo soup, white chicken chili, broccoli cheddar, minestrone, creamy mushroom, greek lemon chicken soup, 20-minute tomato soup, creamy potato soup, freezer chicken tortilla soup, black bean soup, thai coconut chicken soup, roasted butternut squash soup
 
 ### Quick vegetarian meals
 - Head: quick vegetarian meals, fast easy vegetarian meals, quick vegetarian dinners
 - Hub: `/category/vegetarian`, `/collections/quick-vegetarian-meals`
-- Supporting: black bean tacos, black beans and sweet potatoes, chickpea curry, spinach ricotta pasta, peanut tofu bowl, cauliflower tacos, falafel bowls, chickpea tomato skillet
+- Supporting: black bean tacos, black beans and sweet potatoes, chickpea curry, spinach ricotta pasta, peanut tofu bowl, cauliflower tacos, falafel bowls, chickpea tomato skillet, spinach white bean skillet, one-pan tomato gnocchi, mediterranean chickpea bowls, buffalo cauliflower bowls
 
 ### Creamy / orzo chicken
 - Head: creamy chicken orzo, quick orzo chicken recipe, lemon chicken orzo, pesto chicken orzo
-- Supporting: Tuscan chicken orzo, chicken orzo soup, lemon chicken orzo skillet, pesto chicken orzo
+- Supporting: Tuscan chicken orzo, chicken orzo soup, lemon chicken orzo skillet, pesto chicken orzo, coconut curry chicken, skillet chicken piccata
 
 ### Sheet-pan / 30-minute chicken
 - Head: 30 minute chicken dinner, easy sheet pan dinner, sheet pan chicken
 - Hub: `/collections/30-minute-chicken`, `/collections/sheet-pan-dinners`
-- Supporting: honey garlic thighs, fajitas, maple chicken, honey mustard sheet pan, garlic butter chicken bites, teriyaki stir-fry
+- Supporting: honey garlic thighs, fajitas, maple chicken, honey mustard sheet pan, garlic butter chicken bites, teriyaki stir-fry, ranch chicken sheet pan
 
 ### Taco skillet / bean bowls
 - Head: taco skillet sauce, black beans and sweet potatoes recipe
-- Supporting: turkey taco skillet, black bean sweet potato tacos/bowls, cauliflower tacos
+- Supporting: turkey taco skillet, black bean sweet potato tacos/bowls, cauliflower tacos, turkey burrito bowls
+
+### One-pan pasta
+- Head: one pot pasta recipe, creamy mushroom pasta, skillet pasta
+- Hub: `/collections/one-pot-pasta`
+- Supporting: tomato basil pasta, creamy sausage pasta, creamy mushroom pasta, one-pan tomato gnocchi
 
 ## Homepage
 - quick dinner ideas
