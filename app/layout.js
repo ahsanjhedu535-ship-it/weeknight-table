@@ -107,14 +107,6 @@ export default function RootLayout({ children }) {
             gtag('config', '${site.analyticsId}');
           `}
         </Script>
-        <Script
-          id="aclib"
-          src="https://acscdn.com/script/aclib.js"
-          strategy="lazyOnload"
-        />
-        <Script id="aclib-init" strategy="lazyOnload">
-          {`function runAclib(){if(window.aclib){window.aclib.runAutoTag({zoneId:'awzlhy4fnq'});}else{setTimeout(runAclib,400);}}runAclib();`}
-        </Script>
       </body>
     </html>
   );
