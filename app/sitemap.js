@@ -1,34 +1,42 @@
 import { site } from "@/lib/site";
 import { recipes, categories } from "@/lib/recipes";
 import { guides } from "@/lib/guides";
+import { collections } from "@/lib/collections";
 
 export default function sitemap() {
   const base = site.url;
+  const lastModified = new Date(`${site.updated}T00:00:00Z`);
   return [
-    { url: base, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
-    { url: `${base}/about`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.4 },
-    { url: `${base}/contact`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.4 },
-    { url: `${base}/privacy-policy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.2 },
-    { url: `${base}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.2 },
-    { url: `${base}/disclaimer`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.2 },
-    { url: `${base}/editorial-standards`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.4 },
-    { url: `${base}/meal-planner`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/guides`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: base, lastModified, changeFrequency: "weekly", priority: 1 },
+    { url: `${base}/about`, lastModified, changeFrequency: "yearly", priority: 0.4 },
+    { url: `${base}/contact`, lastModified, changeFrequency: "yearly", priority: 0.4 },
+    { url: `${base}/privacy-policy`, lastModified, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${base}/terms`, lastModified, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${base}/disclaimer`, lastModified, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${base}/editorial-standards`, lastModified, changeFrequency: "yearly", priority: 0.4 },
+    { url: `${base}/meal-planner`, lastModified, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/guides`, lastModified, changeFrequency: "monthly", priority: 0.7 },
     ...categories.map((category) => ({
       url: `${base}/category/${category.slug}`,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: "weekly",
       priority: 0.8,
     })),
+    ...collections.map((collection) => ({
+      url: `${base}/collections/${collection.slug}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    })),
     ...recipes.map((recipe) => ({
       url: `${base}/recipes/${recipe.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
     })),
     ...guides.map((guide) => ({
       url: `${base}/guides/${guide.slug}`,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: "monthly",
       priority: 0.7,
     })),

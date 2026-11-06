@@ -1,6 +1,32 @@
 # US search-intent map for quickdinners.online
 
-These phrases match how people in the United States search when they already plan to cook. They are targeting notes, not traffic guarantees. Confirm volume in Google Search Console after the domain is indexed.
+Living cluster map from Search Console footholds plus mid-tail expansions.
+Confirm volume in Google Search Console after each deploy. Not traffic guarantees.
+
+## Priority clusters (Phase 1)
+
+### Quick soup recipes
+- Head: quick soup recipes, easy soup recipes, weeknight soup
+- Hub: `/category/soups`, `/collections/quick-soup-recipes`
+- Supporting: chicken noodle, tomato soup, lentil soup, tortilla soup, chicken orzo soup, white chicken chili, broccoli cheddar, minestrone, creamy mushroom, greek lemon chicken soup, 20-minute tomato soup, creamy potato soup, freezer chicken tortilla soup
+
+### Quick vegetarian meals
+- Head: quick vegetarian meals, fast easy vegetarian meals, quick vegetarian dinners
+- Hub: `/category/vegetarian`, `/collections/quick-vegetarian-meals`
+- Supporting: black bean tacos, black beans and sweet potatoes, chickpea curry, spinach ricotta pasta, peanut tofu bowl, cauliflower tacos, falafel bowls, chickpea tomato skillet
+
+### Creamy / orzo chicken
+- Head: creamy chicken orzo, quick orzo chicken recipe, lemon chicken orzo, pesto chicken orzo
+- Supporting: Tuscan chicken orzo, chicken orzo soup, lemon chicken orzo skillet, pesto chicken orzo
+
+### Sheet-pan / 30-minute chicken
+- Head: 30 minute chicken dinner, easy sheet pan dinner, sheet pan chicken
+- Hub: `/collections/30-minute-chicken`, `/collections/sheet-pan-dinners`
+- Supporting: honey garlic thighs, fajitas, maple chicken, honey mustard sheet pan, garlic butter chicken bites, teriyaki stir-fry
+
+### Taco skillet / bean bowls
+- Head: taco skillet sauce, black beans and sweet potatoes recipe
+- Supporting: turkey taco skillet, black bean sweet potato tacos/bowls, cauliflower tacos
 
 ## Homepage
 - quick dinner ideas
@@ -8,14 +34,15 @@ These phrases match how people in the United States search when they already pla
 - 30 minute dinner recipes
 - easy weeknight dinners
 
-## Category pages
-- `/category/dinner` — easy dinner recipes, 30 minute chicken dinner, sheet pan dinner
-- `/category/breakfast` — easy breakfast recipes, make ahead breakfast
-- `/category/soups` — easy soup recipes, chicken noodle soup recipe
-- `/category/vegetarian` — easy vegetarian dinner recipes, meatless dinner
-
 ## Meal planner
 - `/meal-planner` — weekly dinner planner, weekly grocery list, easy weekly dinner plan
 
-## How the phrases are used
-Each recipe page targets one dish plus a time or ease modifier, for example "honey garlic chicken recipe" and "30 minute chicken thighs." Titles stay as the dish name. The matching phrase sits in the description keywords and, where it reads naturally, in the page copy. Pages are not stuffed with repeated keywords.
+## Collections
+- `/collections/one-pot-pasta`
+- `/collections/30-minute-chicken`
+- `/collections/quick-soup-recipes`
+- `/collections/quick-vegetarian-meals`
+- `/collections/sheet-pan-dinners`
+
+## How phrases are used
+Each recipe page targets one dish plus a time or ease modifier. Titles stay as the dish name (seoTitle may add time). Matching phrases sit in description, keywords, and natural copy. No stuffing.

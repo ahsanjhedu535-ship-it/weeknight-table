@@ -36,7 +36,7 @@ export default function GuidePage({ params }) {
     headline: guide.title,
     description: guide.description,
     datePublished: site.published,
-    dateModified: site.published,
+    dateModified: site.updated,
     inLanguage: "en-US",
     mainEntityOfPage: url,
     author: publisher,

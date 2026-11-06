@@ -17,6 +17,19 @@ export default function RecipeInteractive({ recipe }) {
     );
   };
 
+  function startCooking() {
+    const launch = document.getElementById("start-cooking");
+    if (launch) launch.click();
+    else
+      document
+        .getElementById("cooking-mode")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function printRecipe() {
+    window.print();
+  }
+
   return (
     <section className="section">
       <div className="container recipe-layout">
@@ -29,6 +42,12 @@ export default function RecipeInteractive({ recipe }) {
             height="800"
           />
           <p className="recipe-intro">{recipe.intro}</p>
+          {notes && (
+            <div className="tip-box taste-box">
+              <strong>Before you start</strong>
+              <p>{notes.prepFirst}</p>
+            </div>
+          )}
           <div className="recipe-stats">
             <div className="recipe-stat">
               <span>Prep</span>
@@ -46,6 +65,20 @@ export default function RecipeInteractive({ recipe }) {
               <span>Difficulty</span>
               <strong>{recipe.difficulty}</strong>
             </div>
+          </div>
+          <div className="recipe-toolbar">
+            <button type="button" className="button-primary" onClick={startCooking}>
+              Start cooking mode
+            </button>
+            <button type="button" className="button-secondary" onClick={printRecipe}>
+              Print recipe
+            </button>
+            <Link
+              className="text-link"
+              href={`/meal-planner?add=${encodeURIComponent(recipe.slug)}`}
+            >
+              Save to meal planner
+            </Link>
           </div>
           <CookingMode recipe={recipe} notes={notes} />
           <h2>Ingredients</h2>
@@ -75,14 +108,22 @@ export default function RecipeInteractive({ recipe }) {
           </ul>
           <h2>How to make it</h2>
           <ol className="steps-list">
-            {recipe.steps.map((step) => (
-              <li key={step}>{step}</li>
+            {recipe.steps.map((step, index) => (
+              <li key={step} id={`step-${index + 1}`}>
+                {step}
+              </li>
             ))}
           </ol>
           <div className="tip-box">
             <strong>Kitchen note</strong>
             <p>{recipe.tips}</p>
           </div>
+          {notes?.fix && (
+            <div className="tip-box">
+              <strong>If it goes wrong</strong>
+              <p>{notes.fix}</p>
+            </div>
+          )}
           <h2>Substitutions</h2>
           <ul>
             {recipe.substitutions.map((item) => (
@@ -99,14 +140,10 @@ export default function RecipeInteractive({ recipe }) {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-              <h2>What to prep first</h2>
-              <p>{notes.prepFirst}</p>
               <h2>What to serve with it</h2>
               <p>{notes.serveWith}</p>
               <h2>Leftovers for lunch</h2>
               <p>{notes.leftovers}</p>
-              <h2>If it goes wrong</h2>
-              <p>{notes.fix}</p>
             </>
           )}
           <h2>Make it part of your week</h2>
@@ -114,8 +151,11 @@ export default function RecipeInteractive({ recipe }) {
             Save this recipe in the weekly planner so the grocery list is ready
             before you shop.
           </p>
-          <Link href="/meal-planner" className="button-primary">
-            Open meal planner →
+          <Link
+            href={`/meal-planner?add=${encodeURIComponent(recipe.slug)}`}
+            className="button-primary"
+          >
+            Open meal planner
           </Link>
           <div className="notice" style={{ marginTop: 28 }}>
             Food safety note: cooking times vary by appliance and ingredient
@@ -128,15 +168,7 @@ export default function RecipeInteractive({ recipe }) {
             <div className="eyebrow">Quick recipe guide</div>
             <h3>{recipe.title}</h3>
             <p>{recipe.description}</p>
-            <button
-              type="button"
-              className="button-primary cook-button"
-              onClick={() => {
-                const launch = document.getElementById("start-cooking");
-                if (launch) launch.click();
-                else document.getElementById("cooking-mode")?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-            >
+            <button type="button" className="button-primary cook-button" onClick={startCooking}>
               Start cooking
             </button>
             <div className="serving-control">
@@ -172,11 +204,40 @@ export default function RecipeInteractive({ recipe }) {
           <div className="sidebar-box">
             <h3>Plan more meals</h3>
             <p>Choose several recipes and make a grocery list for your week.</p>
-            <Link className="text-link" href="/meal-planner">
-              Open meal planner →
+            <Link
+              className="text-link"
+              href={`/meal-planner?add=${encodeURIComponent(recipe.slug)}`}
+            >
+              Open meal planner
             </Link>
           </div>
         </aside>
+      </div>
+      <div className="sticky-cook-bar" aria-label="Quick recipe actions">
+        <button type="button" className="button-primary" onClick={startCooking}>
+          Cook
+        </button>
+        <div className="serving-control compact">
+          <button
+            onClick={() => setServings((current) => Math.max(1, current - 1))}
+            aria-label="Decrease servings"
+          >
+            −
+          </button>
+          <strong>{servings}</strong>
+          <button
+            onClick={() => setServings((current) => Math.min(16, current + 1))}
+            aria-label="Increase servings"
+          >
+            +
+          </button>
+        </div>
+        <Link
+          className="text-link"
+          href={`/meal-planner?add=${encodeURIComponent(recipe.slug)}`}
+        >
+          Plan
+        </Link>
       </div>
     </section>
   );

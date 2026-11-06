@@ -31,7 +31,7 @@ export default function Header() {
           <Link href="/category/vegetarian" onClick={() => setOpen(false)}>Vegetarian</Link>
           <Link href="/guides" onClick={() => setOpen(false)}>Guides</Link>
           <Link href="/meal-planner" className="nav-cta" onClick={() => setOpen(false)}>
-            Meal planner ↗
+            Meal planner
           </Link>
         </nav>
       </div>

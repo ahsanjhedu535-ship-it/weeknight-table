@@ -6,11 +6,25 @@ import { guides } from "@/lib/guides";
 import { site } from "@/lib/site";
 
 export const metadata = {
+  title: {
+    absolute: "Quick Dinner Ideas: 30-Minute Meals, Soups & Vegetarian Recipes",
+  },
+  description: site.description,
   alternates: { canonical: "/" },
   openGraph: { url: site.url },
 };
 
 const faqs = [
+  {
+    question: "Where are the quick soup recipes?",
+    answer:
+      "Open Quick Soup Recipes for chicken noodle, creamy tomato, lentil vegetable, white bean and kale, and chicken tortilla soup. Each pot lists prep time, cook time, and leftover storage.",
+  },
+  {
+    question: "Do you have quick vegetarian meals?",
+    answer:
+      "Yes. Quick Vegetarian Meals includes black bean tacos, chickpea coconut curry, spinach ricotta pasta, vegetable fried rice, mushroom stroganoff, and a black beans and sweet potatoes bowl. Most finish in about 20 to 40 minutes.",
+  },
   {
     question: "Which measurements do the recipes use?",
     answer:
@@ -26,24 +40,15 @@ const faqs = [
     answer:
       "The planner keeps your choices while that page is open. It does not create an account and it does not store the list on a server. Copy the list before you close the page.",
   },
-  {
-    question: "Are the photos of the exact plated recipe?",
-    answer:
-      "Photos are licensed Unsplash images. The alt text describes what is in the picture. When the photo shows a similar meal rather than the exact dish, the ingredient list and the steps are the recipe.",
-  },
-  {
-    question: "How do I report a wrong quantity or temperature?",
-    answer: `Email ${site.contactEmail} with the recipe name and the line you noticed, or use the contact form. Privacy requests go to ${site.privacyEmail}. The form checks the fields and saves the message so we can reply.`,
-  },
 ];
 
 const featuredSlugs = [
   "creamy-tuscan-chicken-orzo",
-  "sheet-pan-maple-chicken-sweet-potatoes",
   "easy-chicken-noodle-soup",
-  "apple-cinnamon-baked-oatmeal",
   "crispy-black-bean-tacos",
-  "pumpkin-spice-pancakes",
+  "sweet-potato-black-bean-bowls",
+  "turkey-taco-skillet",
+  "chickpea-coconut-curry",
 ];
 
 export default function Home() {
@@ -59,6 +64,19 @@ export default function Home() {
       acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
   };
+  const itemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Featured quick dinner recipes",
+    itemListOrder: "https://schema.org/ItemListUnordered",
+    numberOfItems: featured.length,
+    itemListElement: featured.map((recipe, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${site.url}/recipes/${recipe.slug}`,
+      name: recipe.title,
+    })),
+  };
 
   return (
     <>
@@ -66,23 +84,31 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }}
+      />
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <div className="eyebrow">Easy dinners for US weeknights</div>
+            <div className="eyebrow">Easy weeknight dinners for US kitchens</div>
             <h1>
-              Quick dinner <br /> <em>ideas.</em>
+              Quick dinner ideas for <em>busy nights.</em>
             </h1>
             <p className="hero-copy">
-              30-minute chicken, sheet-pan meals, and one-pot pasta with US
-              cups, Fahrenheit, and a grocery list you can copy before you shop.
+              30-minute chicken, quick soup recipes, and quick vegetarian meals
+              with US cups, Fahrenheit, and a grocery list you can copy before
+              you shop.
             </p>
             <div className="hero-actions">
               <Link className="button-primary" href="/category/dinner">
-                Browse easy dinners →
+                Browse easy dinners
               </Link>
-              <Link className="text-link" href="/meal-planner">
-                Plan this week →
+              <Link className="text-link" href="/category/soups">
+                Quick soup recipes
+              </Link>
+              <Link className="text-link" href="/category/vegetarian">
+                Vegetarian meals
               </Link>
             </div>
             <div className="measure-note">
@@ -98,10 +124,11 @@ export default function Home() {
               alt="A grain bowl with egg, avocado, and vegetables on a wooden table"
               width="1400"
               height="900"
+              fetchPriority="high"
             />
             <div className="photo-note">
-              <strong>Make tonight delicious.</strong>
-              <span>Everyday recipes, made a little easier.</span>
+              <strong>Cook tonight, shop once.</strong>
+              <span>30-minute skillets, soups, and meatless plates.</span>
             </div>
           </div>
         </div>
@@ -111,16 +138,16 @@ export default function Home() {
         <div className="container">
           <div className="section-heading">
             <div>
-              <div className="eyebrow">Fresh from our kitchen</div>
+              <div className="eyebrow">Start with these</div>
               <h2>Easy 30-minute dinner recipes</h2>
               <p>
-                Chicken, pasta, tacos, and soups you can start after work. Each
-                recipe lists prep time, cook time, and a temperature when food
-                safety depends on it.
+                Creamy chicken orzo, a pot of soup, and fast easy vegetarian
+                meals you can start after work. Each recipe lists prep time,
+                cook time, and a temperature when food safety depends on it.
               </p>
             </div>
             <Link className="text-link" href="/category/dinner">
-              Browse all recipes →
+              Browse all dinners
             </Link>
           </div>
           <div className="recipe-grid">
@@ -162,7 +189,7 @@ export default function Home() {
               <p>One pan, started after work.</p>
               <ul>
                 <li>
-                  <Link href="/recipes/creamy-tuscan-chicken-orzo">Creamy Tuscan chicken orzo</Link>
+                  <Link href="/recipes/creamy-tuscan-chicken-orzo">Creamy chicken orzo</Link>
                 </li>
                 <li>
                   <Link href="/recipes/honey-garlic-chicken-thighs">Honey garlic chicken thighs</Link>
@@ -191,47 +218,67 @@ export default function Home() {
             </article>
           </div>
           <div className="plan-block">
-            <div className="eyebrow">Keep these on hand</div>
-            <h2>A short US pantry for weeknights</h2>
+            <div className="eyebrow">What people search for</div>
+            <h2>Quick soups and vegetarian dinners</h2>
             <p>
-              These are the staples the recipes draw from. Amounts on each
-              recipe are in US cups, tablespoons, and ounces.
+              If you searched for a fast soup or a meatless plate, start here.
+              Those collections are the shortest path into the recipes.
             </p>
           </div>
           <div className="pantry-grid">
+            <article className="pantry-card">
+              <h3>
+                <Link href="/category/soups">Quick soup recipes</Link>
+              </h3>
+              <p>
+                Chicken noodle, creamy tomato, lentil, white bean and kale, and
+                tortilla soup. One pot, leftover lunch the next day.
+              </p>
+            </article>
+            <article className="pantry-card">
+              <h3>
+                <Link href="/category/vegetarian">Quick vegetarian meals</Link>
+              </h3>
+              <p>
+                Black bean tacos, chickpea curry, spinach ricotta pasta, and a
+                black beans and sweet potatoes bowl.
+              </p>
+            </article>
+            <article className="pantry-card">
+              <h3>
+                <Link href="/recipes/creamy-tuscan-chicken-orzo">Creamy chicken orzo</Link>
+              </h3>
+              <p>
+                A 30-minute skillet: chicken, orzo, sun-dried tomatoes, spinach,
+                and Parmesan cream.
+              </p>
+            </article>
+            <article className="pantry-card">
+              <h3>
+                <Link href="/meal-planner">Weekly grocery list</Link>
+              </h3>
+              <p>
+                Pick dinners for the week and copy a combined list before you
+                shop. The list stays in this browser tab only.
+              </p>
+            </article>
             <article className="pantry-card">
               <h3>Oil, salt, pepper</h3>
               <p>Olive oil for the skillet, plus kosher salt and black pepper. Most recipes season to taste instead of listing a fixed salt amount.</p>
             </article>
             <article className="pantry-card">
-              <h3>Onion and garlic</h3>
-              <p>Yellow onions and a head of garlic cover the soups, skillets, and pasta. Buy them every week. They show up more often than fresh herbs.</p>
-            </article>
-            <article className="pantry-card">
-              <h3>Broth and tomatoes</h3>
-              <p>Low-sodium chicken broth and a can of tomatoes. Low-sodium leaves room to salt the pot yourself.</p>
-            </article>
-            <article className="pantry-card">
-              <h3>A starch</h3>
-              <p>Rice, a box of pasta, and a pack of tortillas. Cook extra rice once if you want fried rice later in the week. Cool it in the refrigerator, not on the counter.</p>
-            </article>
-            <article className="pantry-card">
-              <h3>Eggs and dairy</h3>
-              <p>Eggs, butter, and milk for breakfasts. Parmesan and a small carton of cream or half-and-half cover the creamy skillets.</p>
-            </article>
-            <article className="pantry-card">
-              <h3>A few spices</h3>
-              <p>Cumin, chili powder, Italian seasoning, and Dijon mustard. That set seasons the tacos, the sheet-pan chicken, and the pasta.</p>
+              <h3>Onion, garlic, broth</h3>
+              <p>Yellow onions, a head of garlic, and low-sodium chicken or vegetable broth cover the soups, skillets, and pasta.</p>
             </article>
           </div>
           <div className="section-heading">
             <div>
-              <div className="eyebrow">Find your kind of delicious</div>
-              <h2>What sounds good today?</h2>
+              <div className="eyebrow">Find your kind of dinner</div>
+              <h2>Browse by meal</h2>
             </div>
             <p>
-              Browse by the meal you need, the mood you are in, or what is
-              already in your kitchen.
+              Dinners, breakfasts, quick soup recipes, and quick vegetarian
+              meals, plus guides and a planner.
             </p>
           </div>
           <div className="category-grid">
@@ -249,6 +296,34 @@ export default function Home() {
               </Link>
             ))}
           </div>
+          <div className="plan-block" style={{ marginTop: 42 }}>
+            <div className="eyebrow">Collections</div>
+            <h2>Browse by method</h2>
+            <p>
+              Shorter paths into the recipes Google already associates with this
+              site: soups, vegetarian plates, 30-minute chicken, and sheet pans.
+            </p>
+          </div>
+          <div className="time-grid">
+            <article className="time-card">
+              <h3>
+                <Link href="/collections/quick-soup-recipes">Quick soup recipes</Link>
+              </h3>
+              <p>Chicken noodle, orzo soup, tomato, chili, and freezer pots.</p>
+            </article>
+            <article className="time-card">
+              <h3>
+                <Link href="/collections/30-minute-chicken">30-minute chicken</Link>
+              </h3>
+              <p>Orzo skillets, garlic butter bites, fajitas, and stir-fry.</p>
+            </article>
+            <article className="time-card">
+              <h3>
+                <Link href="/collections/quick-vegetarian-meals">Vegetarian meals</Link>
+              </h3>
+              <p>Bean tacos, chickpea skillets, bowls, and meatless pasta.</p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -264,7 +339,7 @@ export default function Home() {
               </p>
             </div>
             <Link className="text-link" href="/guides">
-              All guides →
+              All guides
             </Link>
           </div>
           <div className="guide-grid">
@@ -276,7 +351,7 @@ export default function Home() {
                 </h3>
                 <p>{guide.description}</p>
                 <Link className="text-link" href={`/guides/${guide.slug}`}>
-                  Read the guide <span>→</span>
+                  Read the guide
                 </Link>
               </article>
             ))}
@@ -295,7 +370,7 @@ export default function Home() {
           <FaqAccordion items={faqs} />
           <p className="faq-more">
             <Link className="text-link" href="/editorial-standards">
-              Read the editorial standards →
+              Read the editorial standards
             </Link>
           </p>
           <div className="planner-banner">
@@ -303,7 +378,7 @@ export default function Home() {
               <div className="eyebrow" style={{ color: "#d8e6d6" }}>
                 Your week, a little easier
               </div>
-              <h2>Make a plan. Shop once. Enjoy dinner.</h2>
+              <h2>Make a plan. Shop once.</h2>
               <p>
                 Choose recipes for the week and build a simple grocery list
                 from your picks. Less last-minute guessing, more time around
@@ -311,7 +386,7 @@ export default function Home() {
               </p>
             </div>
             <Link href="/meal-planner" className="button-light">
-              Open the meal planner →
+              Open the meal planner
             </Link>
           </div>
         </div>

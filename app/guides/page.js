@@ -4,9 +4,9 @@ import { site } from "@/lib/site";
 import { breadcrumbList, pageUrl } from "@/lib/schema";
 
 export const metadata = {
-  title: "Cooking Guides",
+  title: "Weeknight Dinner Planning Guides",
   description:
-    "Guides for planning easy weeknight dinners, building a grocery list, and storing leftovers safely.",
+    "Guides for an easy weekly dinner plan, a weekly grocery list, leftover safety, and sheet-pan method notes.",
   alternates: { canonical: "/guides" },
 };
 
@@ -27,7 +27,7 @@ export default function GuidesPage() {
             <Link href="/">Home</Link> / Guides
           </div>
           <div className="eyebrow">Kitchen notes</div>
-          <h1>Guides for the week you actually have</h1>
+          <h1>Weeknight dinner planning guides</h1>
           <p>
             Planning, shopping, food safety, and substitutions. These are the
             notes that sit next to the recipes, not a second copy of them.

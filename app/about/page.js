@@ -16,16 +16,26 @@ export default function About() {
         <div className="eyebrow">About us</div>
         <h1>About Quick Dinners</h1>
         <p>
-          Welcome to QuickDinners.online — your go-to source for simple, fast,
-          and delicious weeknight meals for busy American families.
+          {site.name} publishes weeknight recipes at {site.url} for people
+          cooking in a US home kitchen after work: one or two pans, a normal
+          grocery run, and enough time left to eat.
         </p>
         <p>
-          {site.name} is the publisher of {site.url}. The recipes are written
-          for a home kitchen in the United States: a regular grocery store, one
-          or two pans, and a clock that still leaves time to eat. You will not
-          find a restaurant tasting menu here. You will find chicken, sheet-pan
-          dinners, one-pot pasta, soups, breakfasts, and vegetarian plates with
-          the quantities written out.
+          The publisher is {site.name}. Recipes are written with US cups and
+          Fahrenheit, food-safety temperatures for poultry, and storage notes
+          for leftovers. You will find chicken dinners, sheet-pan meals,
+          one-pot pasta, quick soup recipes, breakfasts, and vegetarian plates
+          with the quantities written out—not a restaurant tasting menu.
+        </p>
+        <h2>How we keep the site useful</h2>
+        <p>
+          Methods are written as steps a home cook can follow on a Tuesday.
+          When doneness matters for safety, the recipe names a thermometer
+          temperature. Photos come from licensed Unsplash images and are
+          labeled for what they show. Corrections go to{" "}
+          <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>. The{" "}
+          <Link href="/editorial-standards">editorial standards</Link> page
+          lists measurement rules and USDA temperature sources.
         </p>
         <h2>Who the recipes are for</h2>
         <p>

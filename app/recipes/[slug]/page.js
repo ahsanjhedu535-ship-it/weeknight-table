@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { recipes, findRecipe, categories } from "@/lib/recipes";
+import RecipeCard from "@/components/RecipeCard";
+import { recipes, findRecipe, categories, relatedRecipes, recipeSeoTitle } from "@/lib/recipes";
 import { site, publishedLabel } from "@/lib/site";
-import { breadcrumbList, pageUrl, publisher } from "@/lib/schema";
+import { breadcrumbList, howToSteps, pageUrl, pinMeta, publisher, recipeNutrition } from "@/lib/schema";
 import RecipeInteractive from "./RecipeInteractive";
 import EchoProductReviews from "./EchoProductReviews";
 
@@ -28,20 +29,35 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const recipe = findRecipe(params.slug);
-  return recipe
-    ? {
-        title: recipe.title,
-        description: recipe.description,
-        keywords: recipe.keywords,
-        alternates: { canonical: `/recipes/${params.slug}` },
-        openGraph: {
-          title: recipe.title,
-          description: recipe.description,
-          url: pageUrl(`/recipes/${params.slug}`),
-          images: [{ url: recipe.image, alt: recipe.imageAlt || recipe.title }],
-        },
-      }
-    : { title: "Recipe not found" };
+  if (!recipe) return { title: "Recipe not found" };
+  const pin = pinMeta(recipe);
+  const title = recipeSeoTitle(recipe);
+  const description = recipe.seoDescription || recipe.description;
+  return {
+    title,
+    description,
+    keywords: recipe.keywords,
+    alternates: { canonical: `/recipes/${params.slug}` },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: pageUrl(`/recipes/${params.slug}`),
+      images: [{ url: recipe.image, alt: recipe.imageAlt || recipe.title }],
+      modifiedTime: site.updated,
+      publishedTime: site.published,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [recipe.image],
+    },
+    other: {
+      "og:image:alt": recipe.imageAlt || recipe.title,
+      "pinterest:description": pin.description,
+    },
+  };
 }
 
 function categorySlug(categoryName) {
@@ -73,7 +89,7 @@ export default function RecipePage({ params }) {
     url,
     mainEntityOfPage: url,
     datePublished: site.published,
-    dateModified: site.published,
+    dateModified: site.updated,
     author: publisher,
     publisher,
     description: recipe.description,
@@ -91,12 +107,11 @@ export default function RecipePage({ params }) {
     inLanguage: "en-US",
     keywords: recipe.keywords.join(", "),
     recipeIngredient: recipe.ingredients,
-    recipeInstructions: recipe.steps.map((step) => ({
-      "@type": "HowToStep",
-      text: step,
-    })),
+    recipeInstructions: howToSteps(recipe, url),
+    nutrition: recipeNutrition(recipe),
   };
   const related = relatedReading(recipe);
+  const moreRecipes = relatedRecipes(recipe);
 
   return (
     <>
@@ -126,7 +141,7 @@ export default function RecipePage({ params }) {
             {recipe.difficulty}
           </div>
           <p className="byline">
-            Published {publishedLabel()} by{" "}
+            Published {publishedLabel()} · Updated {publishedLabel(site.updated)} by{" "}
             <Link href="/about">{site.name}</Link>. Read the{" "}
             <Link href="/editorial-standards">editorial standards</Link>.
             Nutrition facts are approximate estimates. See the{" "}
@@ -149,15 +164,28 @@ export default function RecipePage({ params }) {
         </div>
       </section>
       <section className="section related-reading">
-        <div className="container prose">
-          <h2>Related reading</h2>
-          <ul>
-            {related.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href}>{item.label}</Link>
-              </li>
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <div className="eyebrow">Keep cooking</div>
+              <h2>More {recipe.category.toLowerCase()} recipes</h2>
+            </div>
+          </div>
+          <div className="recipe-grid">
+            {moreRecipes.map((item) => (
+              <RecipeCard key={item.slug} recipe={item} />
             ))}
-          </ul>
+          </div>
+          <div className="prose" style={{ marginTop: 36 }}>
+            <h2>Related reading</h2>
+            <ul>
+              {related.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
     </>

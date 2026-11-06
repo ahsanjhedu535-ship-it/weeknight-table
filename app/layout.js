@@ -1,3 +1,4 @@
+import { DM_Sans, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -5,15 +6,44 @@ import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
 import { publisher } from "@/lib/schema";
 
+const sans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const serif = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const defaultTitle =
+  "Quick Dinner Ideas: 30-Minute Meals, Soups & Vegetarian Recipes";
+
 export const metadata = {
   title: {
-    default: "Quick Dinner Ideas | Easy 30-Minute Recipes",
+    default: defaultTitle,
     template: "%s | Quick Dinners",
   },
   description: site.description,
+  keywords: [
+    "quick dinner ideas",
+    "easy 30 minute dinner recipes",
+    "quick soup recipes",
+    "quick vegetarian meals",
+    "creamy chicken orzo",
+  ],
   metadataBase: new URL(site.url),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
   openGraph: {
-    title: "Quick Dinner Ideas | Easy 30-Minute Recipes",
+    title: defaultTitle,
     description: site.description,
     type: "website",
     url: site.url,
@@ -26,7 +56,11 @@ export const metadata = {
       },
     ],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: site.description,
+  },
   icons: { icon: "/logo.svg" },
 };
 
@@ -40,22 +74,23 @@ export default function RootLayout({ children }) {
     inLanguage: "en-US",
     publisher,
   };
+  const organization = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    ...publisher,
+    sameAs: [],
+  };
 
   return (
-    <html lang="en-US">
-      <head>
-      <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
-      <script type="text/javascript">
-    aclib.runAutoTag({
-        zoneId: 'awzlhy4fnq',
-    });
-    </script>
-       
-      </head>
+    <html lang="en-US" className={`${sans.variable} ${serif.variable}`}>
       <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
         />
         <Header />
         <main>{children}</main>
@@ -71,6 +106,14 @@ export default function RootLayout({ children }) {
             gtag('js', new Date());
             gtag('config', '${site.analyticsId}');
           `}
+        </Script>
+        <Script
+          id="aclib"
+          src="https://acscdn.com/script/aclib.js"
+          strategy="lazyOnload"
+        />
+        <Script id="aclib-init" strategy="lazyOnload">
+          {`function runAclib(){if(window.aclib){window.aclib.runAutoTag({zoneId:'awzlhy4fnq'});}else{setTimeout(runAclib,400);}}runAclib();`}
         </Script>
       </body>
     </html>
