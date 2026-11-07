@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { guides, findGuide } from "@/lib/guides";
 import { site, publishedLabel } from "@/lib/site";
+import FaqAccordion from "@/components/FaqAccordion";
 import { breadcrumbList, pageUrl, publisher, socialPageMeta } from "@/lib/schema";
 import { findRecipe } from "@/lib/recipes";
 
@@ -76,6 +77,21 @@ const guideRecipeLinks = {
     "roasted-butternut-squash-soup",
     "thai-coconut-chicken-soup",
   ],
+  "simple-cream-sauce-for-pasta": [
+    "garlic-parmesan-cream-pasta",
+    "creamy-mushroom-pasta",
+    "one-pan-creamy-sausage-pasta",
+  ],
+  "how-long-leftover-soup-lasts": [
+    "easy-chicken-noodle-soup",
+    "easy-vegetable-minestrone",
+    "freezer-friendly-chicken-tortilla-soup",
+  ],
+  "how-to-store-soup-rice-and-pasta": [
+    "easy-chicken-noodle-soup",
+    "creamy-tortellini-soup",
+    "chicken-fried-rice",
+  ],
 };
 
 export function generateStaticParams() {
@@ -118,6 +134,18 @@ export default function GuidePage({ params }) {
     { name: "Guides", url: pageUrl("/guides") },
     { name: guide.title, url },
   ]);
+  const faqs = guide.faqs || [];
+  const faqSchema = faqs.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      }
+    : null;
 
   return (
     <>
@@ -129,6 +157,12 @@ export default function GuidePage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <section className="page-hero">
         <div className="container">
           <div className="breadcrumbs">
@@ -154,6 +188,12 @@ export default function GuidePage({ params }) {
               ))}
             </div>
           ))}
+          {faqs.length > 0 && (
+            <>
+              <h2>Common questions</h2>
+              <FaqAccordion items={faqs} />
+            </>
+          )}
           {relatedRecipes.length > 0 && (
             <>
               <h2>Recipes that pair with this guide</h2>

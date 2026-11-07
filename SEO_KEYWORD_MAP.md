@@ -49,5 +49,17 @@ Confirm volume in Google Search Console after each deploy. Not traffic guarantee
 - `/collections/quick-vegetarian-meals`
 - `/collections/sheet-pan-dinners`
 
+## GSC CTR priorities (refresh when impressions rise)
+Pages with impressions and weak CTR get title/meta/intro overrides in `lib/seoCtrOverrides.js` first:
+- `/guides/how-to-store-soup-rice-and-pasta`
+- `/recipes/creamy-tuscan-chicken-orzo`
+- `/recipes/sausage-pepper-and-onion-pasta`
+- `/category/vegetarian`, `/category/soups`
+- `/recipes/easy-chicken-noodle-soup`
+- `/recipes/spinach-ricotta-pasta`
+- `/recipes/turkey-taco-skillet`
+
+Supporting queries still building: cream sauce pasta, black beans and sweet potatoes, taco skillet sauce, easy quick soup.
+
 ## How phrases are used
 Each recipe page targets one dish plus a time or ease modifier. Titles stay as the dish name (seoTitle may add time). Matching phrases sit in description, keywords, and natural copy. No stuffing.

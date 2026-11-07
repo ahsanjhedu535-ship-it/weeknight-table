@@ -22,12 +22,17 @@ const faqs = [
   {
     question: "Where are the quick soup recipes?",
     answer:
-      "Open Quick Soup Recipes for chicken noodle, creamy tomato, lentil vegetable, white bean and kale, and chicken tortilla soup. Each pot lists prep time, cook time, and leftover storage.",
+      "Open Quick Soup Recipes for quick chicken noodle soup, creamy tomato, lentil vegetable, white bean and kale, chicken tortilla soup, and black bean soup. Each pot lists prep time, cook time, and leftover storage.",
   },
   {
     question: "Do you have quick vegetarian meals?",
     answer:
-      "Yes. Quick Vegetarian Meals includes black bean tacos, chickpea coconut curry, spinach ricotta pasta, vegetable fried rice, mushroom stroganoff, and a black beans and sweet potatoes bowl. Most finish in about 20 to 40 minutes.",
+      "Yes. Quick Vegetarian Meals covers fast easy vegetarian dinners: black bean tacos, chickpea coconut curry, spinach ricotta pasta, vegetable fried rice, and a black beans and sweet potatoes recipe. Most finish in about 20 to 40 minutes.",
+  },
+  {
+    question: "Do you have a creamy chicken orzo recipe?",
+    answer:
+      "Yes. The creamy Tuscan chicken orzo is a quick orzo chicken recipe in one skillet with spinach, sun-dried tomatoes, and Parmesan in about 30 minutes. Lemon chicken orzo and pesto chicken orzo are in the same collection.",
   },
   {
     question: "Which measurements do the recipes use?",

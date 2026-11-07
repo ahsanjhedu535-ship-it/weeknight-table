@@ -72,7 +72,7 @@ const categorySeo = {
   dinner: {
     title: "Easy Dinner Recipes (30-Minute Weeknight Meals)",
     description:
-      "Easy dinner recipes for busy US weeknights: 30-minute chicken, creamy chicken orzo, sheet-pan meals, one-pot pasta, and turkey taco skillet.",
+      "Easy dinner recipes for busy US weeknights: creamy chicken orzo, turkey taco skillet, sausage pepper pasta, sheet-pan chicken, and one-pot pasta.",
   },
   breakfast: {
     title: "Easy Breakfast Recipes",
@@ -80,14 +80,14 @@ const categorySeo = {
       "Make-ahead breakfast recipes with US measurements: baked oatmeal, breakfast burritos, overnight oats, egg muffins, and pancakes.",
   },
   soups: {
-    title: "Quick Soup Recipes for Weeknight Dinner",
+    title: "Quick Soup Recipes (Easy Weeknight Soup Ideas)",
     description:
-      "Quick soup recipes for dinner: chicken noodle, creamy tomato, lentil vegetable, chicken orzo, white chili, and tortilla soup.",
+      "Quick soup recipes and easy quick soup ideas: chicken noodle, tomato, lentil, tortilla, orzo soup, and white chili with leftover storage tips.",
   },
   vegetarian: {
-    title: "Quick Vegetarian Meals and Easy Meatless Dinners",
+    title: "Quick Vegetarian Meals (Fast Easy Meatless Dinners)",
     description:
-      "Quick vegetarian meals: black bean tacos, chickpea curry, spinach ricotta pasta, tofu bowls, and a black beans and sweet potatoes recipe.",
+      "Quick vegetarian meals and fast easy vegetarian dinners: black bean tacos, spinach ricotta pasta, chickpea curry, bowls, and black beans with sweet potatoes.",
   },
 };
 
@@ -130,7 +130,12 @@ const categoryFaqs = {
     {
       question: "How should I store leftover soup?",
       answer:
-        "Cool in a wide container and refrigerate within two hours. Store noodles apart from broth when you can. Reheat until steaming, 165°F (74°C) for chicken soups.",
+        "Cool in a wide container and refrigerate within two hours. Store noodles apart from broth when you can. Reheat until steaming, 165°F (74°C) for chicken soups. See the leftover soup storage guide for fridge and freezer timing.",
+    },
+    {
+      question: "Which quick soup should I make first?",
+      answer:
+        "Start with quick chicken noodle soup if you have cooked chicken, 20-minute tomato soup for a pantry night, or black bean soup when you want something blender-smooth and freezer-friendly.",
     },
   ],
   vegetarian: [
@@ -142,7 +147,12 @@ const categoryFaqs = {
     {
       question: "Where do I start for black beans and sweet potatoes?",
       answer:
-        "Try the sweet potato and black bean bowls or the black bean sweet potato tacos. Both roast the potatoes while the beans warm.",
+        "Try the sweet potato and black bean bowls, the black bean sweet potato tacos, or the black bean sweet potato skillet. All roast or warm the potatoes while the beans season in the pan.",
+    },
+    {
+      question: "What are fast easy vegetarian meals under 30 minutes?",
+      answer:
+        "Spinach ricotta pasta, crispy black bean tacos, spinach white bean skillet, veggie quesadillas, and chickpea tomato skillet all finish in about 20 to 30 minutes.",
     },
   ],
 };
