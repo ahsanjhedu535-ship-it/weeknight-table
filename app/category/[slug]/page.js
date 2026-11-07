@@ -4,7 +4,7 @@ import { categories, recipes } from "@/lib/recipes";
 import RecipeCard from "@/components/RecipeCard";
 import FaqAccordion from "@/components/FaqAccordion";
 import { site } from "@/lib/site";
-import { breadcrumbList, pageUrl } from "@/lib/schema";
+import { breadcrumbList, pageUrl, socialPageMeta } from "@/lib/schema";
 
 const categoryNames = {
   dinner: "Dinner",
@@ -110,6 +110,16 @@ const categoryFaqs = {
       answer:
         "Baked oatmeal, egg muffins, overnight oats, breakfast burritos, and the frittata keep in the refrigerator. Reheat egg dishes covered.",
     },
+    {
+      question: "Which breakfasts are better cooked fresh?",
+      answer:
+        "Pancakes and the potato egg skillet taste best from a hot pan. Save make-ahead recipes for weekday mornings and cook skillet breakfasts on slower days.",
+    },
+    {
+      question: "Can I freeze breakfast recipes from this list?",
+      answer:
+        "Egg muffins, breakfast burritos, and baked French toast portions freeze well. Cool completely, wrap tightly, and reheat until hot in the center.",
+    },
   ],
   soups: [
     {
@@ -139,16 +149,15 @@ const categoryFaqs = {
 
 export async function generateMetadata({ params }) {
   const seo = categorySeo[params.slug];
-  return {
+  const category = categories.find((item) => item.slug === params.slug);
+  return socialPageMeta({
     title: seo?.title || "Recipe Category",
-    description: seo?.description,
-    alternates: { canonical: `/category/${params.slug}` },
-    openGraph: {
-      title: seo?.title,
-      description: seo?.description,
-      url: pageUrl(`/category/${params.slug}`),
-    },
-  };
+    description: seo?.description || category?.desc,
+    path: `/category/${params.slug}`,
+    image: category
+      ? { url: category.image, alt: category.imageAlt || category.name }
+      : undefined,
+  });
 }
 
 export default function CategoryPage({ params }) {

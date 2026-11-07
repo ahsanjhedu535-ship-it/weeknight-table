@@ -1,17 +1,29 @@
 import Link from "next/link";
 import { site, publishedLabel } from "@/lib/site";
+import { breadcrumbList, pageUrl, socialPageMeta } from "@/lib/schema";
 
-export const metadata = {
+export const metadata = socialPageMeta({
   title: "Editorial Standards",
   description:
     "How Quick Dinners writes recipes, checks temperatures, labels photos, and handles corrections.",
-  alternates: { canonical: "/editorial-standards" },
-};
+  path: "/editorial-standards",
+});
 
 export default function EditorialStandards() {
+  const crumbs = breadcrumbList([
+    { name: "Home", url: site.url },
+    { name: "Editorial standards", url: pageUrl("/editorial-standards") },
+  ]);
   return (
     <section className="section">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }}
+      />
       <div className="container prose">
+        <div className="breadcrumbs">
+          <Link href="/">Home</Link> / Editorial standards
+        </div>
         <div className="eyebrow">How this site is edited</div>
         <h1>Editorial standards</h1>
         <p>

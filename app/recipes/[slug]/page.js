@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import RecipeCard from "@/components/RecipeCard";
 import { recipes, findRecipe, categories, relatedRecipes, recipeSeoTitle } from "@/lib/recipes";
+import { collectionsForRecipe } from "@/lib/collections";
 import { site, publishedLabel } from "@/lib/site";
 import { breadcrumbList, howToSteps, pageUrl, pinMeta, publisher, recipeNutrition } from "@/lib/schema";
 import RecipeInteractive from "./RecipeInteractive";
@@ -14,13 +15,40 @@ const cuisineBySlug = {
   "spinach-ricotta-pasta": "Italian",
   "skillet-turkey-meatballs": "Italian",
   "sausage-pepper-and-onion-pasta": "Italian",
+  "one-pan-creamy-sausage-pasta": "Italian",
+  "creamy-mushroom-pasta": "Italian",
+  "one-pan-tomato-gnocchi": "Italian",
+  "pesto-pasta-primavera": "Italian",
+  "weeknight-cacio-e-pepe": "Italian",
+  "sun-dried-tomato-chicken-pasta": "Italian",
+  "creamy-tortellini-soup": "Italian",
+  "minestrone-soup": "Italian",
+  "skillet-eggplant-parmesan": "Italian",
+  "pesto-chicken-orzo": "Italian",
+  "lemon-chicken-orzo-skillet": "Italian",
   "crispy-black-bean-tacos": "Mexican",
   "turkey-taco-skillet": "Mexican",
   "sheet-pan-chicken-fajitas": "Mexican",
   "chicken-tortilla-soup": "Mexican",
+  "black-bean-sweet-potato-tacos": "Mexican",
+  "roasted-cauliflower-tacos": "Mexican",
+  "turkey-burrito-bowls": "Mexican",
+  "turkey-taco-soup": "Mexican",
+  "crispy-veggie-quesadillas": "Mexican",
   "beef-and-broccoli-stir-fry": "Asian",
   "vegetable-fried-rice": "Asian",
+  "teriyaki-chicken-stir-fry": "Asian",
+  "chicken-fried-rice": "Asian",
+  "peanut-tofu-bowl": "Asian",
+  "miso-ginger-tofu-bowls": "Asian",
+  "thai-coconut-chicken-soup": "Thai",
+  "coconut-curry-chicken": "Thai",
   "chickpea-coconut-curry": "Indian",
+  "baked-falafel-bowls": "Mediterranean",
+  "mediterranean-chickpea-bowls": "Mediterranean",
+  "greek-lemon-chicken-soup": "Greek",
+  "weeknight-shakshuka": "Middle Eastern",
+  "skillet-chicken-piccata": "Italian",
 };
 
 export function generateStaticParams() {
@@ -198,6 +226,12 @@ function relatedReading(recipe) {
     { href: "/editorial-standards", label: "How these recipes are written" },
     { href: "/disclaimer", label: "Recipe and nutrition disclaimer" },
   ];
+  for (const collection of collectionsForRecipe(recipe.slug)) {
+    links.push({
+      href: `/collections/${collection.slug}`,
+      label: `More in ${collection.title}`,
+    });
+  }
   if (/chicken|turkey/.test(blob)) {
     links.push({
       href: "/guides/chicken-temperature-and-leftover-safety",
@@ -219,6 +253,12 @@ function relatedReading(recipe) {
     links.push({
       href: "/guides/sheet-pan-dinner-method",
       label: "Sheet-pan dinner method",
+    });
+  }
+  if (/bowl|burrito|chickpea|tofu|cauliflower/.test(blob)) {
+    links.push({
+      href: "/guides/how-to-build-a-weeknight-bowl",
+      label: "How to build a weeknight bowl",
     });
   }
   links.push({ href: "/meal-planner", label: "Add this recipe to the weekly planner" });

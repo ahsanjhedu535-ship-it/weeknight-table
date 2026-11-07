@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { guides } from "@/lib/guides";
 import { site } from "@/lib/site";
-import { breadcrumbList, pageUrl } from "@/lib/schema";
+import { breadcrumbList, pageUrl, socialPageMeta } from "@/lib/schema";
 
-export const metadata = {
+export const metadata = socialPageMeta({
   title: "Weeknight Dinner Planning Guides",
   description:
     "Guides for an easy weekly dinner plan, a weekly grocery list, leftover safety, and sheet-pan method notes.",
-  alternates: { canonical: "/guides" },
-};
+  path: "/guides",
+});
 
 export default function GuidesPage() {
   const crumbs = breadcrumbList([

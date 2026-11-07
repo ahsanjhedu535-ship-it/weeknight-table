@@ -1,18 +1,30 @@
 import Link from "next/link";
 import ContactDirectory from "@/components/ContactDirectory";
 import { site } from "@/lib/site";
+import { breadcrumbList, pageUrl, socialPageMeta } from "@/lib/schema";
 
-export const metadata = {
+export const metadata = socialPageMeta({
   title: "About Quick Dinners",
   description:
     "Quick Dinners publishes easy weeknight meals, breakfasts, soups, and meal plans for busy American families, using US cups and Fahrenheit.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 export default function About() {
+  const crumbs = breadcrumbList([
+    { name: "Home", url: site.url },
+    { name: "About", url: pageUrl("/about") },
+  ]);
   return (
     <section className="section">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }}
+      />
       <div className="container prose">
+        <div className="breadcrumbs">
+          <Link href="/">Home</Link> / About
+        </div>
         <div className="eyebrow">About us</div>
         <h1>About Quick Dinners</h1>
         <p>

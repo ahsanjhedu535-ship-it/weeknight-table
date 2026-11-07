@@ -4,14 +4,18 @@ import FaqAccordion from "@/components/FaqAccordion";
 import { recipes, categories } from "@/lib/recipes";
 import { guides } from "@/lib/guides";
 import { site } from "@/lib/site";
+import { socialPageMeta } from "@/lib/schema";
+
+const homeTitle =
+  "Quick Dinner Ideas: 30-Minute Meals, Soups & Vegetarian Recipes";
 
 export const metadata = {
-  title: {
-    absolute: "Quick Dinner Ideas: 30-Minute Meals, Soups & Vegetarian Recipes",
-  },
-  description: site.description,
-  alternates: { canonical: "/" },
-  openGraph: { url: site.url },
+  ...socialPageMeta({
+    title: homeTitle,
+    description: site.description,
+    path: "/",
+  }),
+  title: { absolute: homeTitle },
 };
 
 const faqs = [
@@ -322,6 +326,18 @@ export default function Home() {
                 <Link href="/collections/quick-vegetarian-meals">Vegetarian meals</Link>
               </h3>
               <p>Bean tacos, chickpea skillets, bowls, and meatless pasta.</p>
+            </article>
+            <article className="time-card">
+              <h3>
+                <Link href="/collections/one-pot-pasta">One-pot pasta</Link>
+              </h3>
+              <p>Orzo, tomato basil, sausage pasta, gnocchi, and creamy mushroom.</p>
+            </article>
+            <article className="time-card">
+              <h3>
+                <Link href="/collections/sheet-pan-dinners">Sheet-pan dinners</Link>
+              </h3>
+              <p>Maple chicken, fajitas, ranch chicken, and lemon pepper trays.</p>
             </article>
           </div>
         </div>
