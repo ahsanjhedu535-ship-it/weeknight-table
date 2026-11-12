@@ -7,6 +7,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="site-header">
+      <meta name="profiton-domain-verification" content="3d5d80ca78d078ce9fcb9a4d69ac588ac15368fa6a80b8cb951f06801985a2dc" />
       <div className="header-inner">
         <Link href="/" className="brand">
           <span className="brand-mark">Q</span>
